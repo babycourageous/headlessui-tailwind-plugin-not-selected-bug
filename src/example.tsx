@@ -37,29 +37,21 @@ export default function Example() {
               {people.map((person, personIdx) => (
                 <Listbox.Option
                   key={personIdx}
-                  className={({ active }) =>
-                    `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                      active ? 'bg-amber-100 text-amber-900' : 'text-gray-900'
-                    }`
-                  }
+                  className="relative cursor-default select-none py-2 pl-10 pr-4 ui-active:bg-amber-100 ui-active:text-amber-900 ui-not-active:text-gray-900"
                   value={person}
                 >
-                  {({ selected }) => (
-                    <>
+
                       <span
-                        className={`block truncate ${
-                          selected ? 'font-medium' : 'font-normal'
-                        }`}
+                        className="block truncate ui-selected:font-medium ui-not-selected:font-normal"
                       >
                         {person.name}
                       </span>
-                      {selected ? (
-                        <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
+
+                        <span className="absolute inset-y-0 left-0 items-center pl-3 text-amber-600 ui-selected:flex ui-not-selected:hidden">
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
-                      ) : null}
-                    </>
-                  )}
+
+
                 </Listbox.Option>
               ))}
             </Listbox.Options>
